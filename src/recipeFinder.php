@@ -9,10 +9,12 @@ if (isset($_POST["import"])) {
         $recipes = json_decode($recipeData, true);
     }
     if ($_FILES["file"]["size"] > 0) {
+        // read csv file
         $file = fopen($itemfileName, "r");
         $i=0;
         $itemArr = [];
         while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
+            //to make an array of all the recpies with their ingredients 
             if(!empty($column[0])){
                 $itemArr[$i]['item']  = $column[0];
                 $itemArr[$i]['amount']= $column[1];
@@ -22,13 +24,18 @@ if (isset($_POST["import"])) {
             }
         }
     }
+    //to check both are arrays(item and recipe array) are not empty)
     if(!empty($recipes) && !empty($itemArr)){
+        //method to match the available items with the recipe ingredients
         $tonightDishArr = matchRecipe($recipes, $itemArr);
+        // to check if tonightDishArr is not empty
         if(!empty($tonightDishArr)){
             echo json_encode(['status' => true, 'message' => 'recipe found', 'data' => $tonightDishArr]);
         } else {
-            echo json_encode(['status' => false, 'message' => 'recipe not found']);
+            //if tonightDishArr is empty, no recipe matched with the available items in the freeze
+            echo json_encode(['status' => false, 'message' => 'Order Takeout']);
         }
+        // if provided inputs are not valid or one of them is not valid
     } else {
         echo json_encode(['status' => false, 'message' => 'Please provide valid input']);
     }
