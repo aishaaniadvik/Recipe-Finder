@@ -1,4 +1,12 @@
 <?php
+
+/**
+     * date         : 24 Feb 2021
+     * author       : Indu
+     * description  : to import and read csv and json file after submitting and sent both the file array to matchRecipe()    
+     * @return .     json object of suggested dish for tonight
+     *
+        **/
 if (isset($_POST["import"])) {
     $itemfileName     = $_FILES["file"]["tmp_name"];
     // Read JSON file
@@ -42,6 +50,17 @@ if (isset($_POST["import"])) {
    }
 
 
+/**
+     * access public
+     * Module Name  : Recipe Finder
+     * Method       : matchRecipe.
+     * date         : 24 Feb 2021
+     * author       : Indu
+     * description  : match the available ingredients with the recipe's ingredients.
+     * param        : $recipes, $itemArr       
+     * @return .     the array of suggested dish for tomight
+     *
+        **/
 function matchRecipe($recipes, $itemArr){
     $today     = date("Y-m-d");
     $timestamp = strtotime($today);
