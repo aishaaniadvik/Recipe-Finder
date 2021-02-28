@@ -26,7 +26,7 @@ To get the one or more dishes on the basis of available items in the freeze
 PHPUnit can easily be installed via Composer. For more details kindly refer below url
 https://phpunit.de/getting-started/phpunit-9.html 
 
-#### To run a PHPUnit test with the following command in vscode
+#### Run PHPUnit test cases with the following commands in vscode
   - cd tests
   - open test case file in tests/tests folder
   - vendor/bin/phpunit
