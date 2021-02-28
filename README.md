@@ -27,7 +27,6 @@ PHPUnit can be easily installed via Composer. For more details kindly refer belo
 https://phpunit.de/getting-started/phpunit-9.html 
 
 #### Run PHPUnit test cases with the following commands in vscode
-  - cd tests
   - open test case file in tests/tests folder
   - go to vscode terminal 
   - In terminal write command "cd tests" then press enter
