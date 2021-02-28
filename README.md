@@ -17,7 +17,7 @@ To get the one or more dishes on the basis of available items in the freeze
   or 
 - git clone https://github.com/aishaaniadvik/Recipe-Finder
 - run the Application by hitting url: http://localhost/Recipe-Finder/
-- Select a ingredients csv file, csv file must be in the format (item, amount, unit, useBy). Ingredient csv file is present in Recipe-Finder/templates 
+- Select a ingredient csv file, csv file must be in the format (item, amount, unit, useBy). Ingredient csv file is present in Recipe-Finder/templates 
 - Select a recipe json file having recipe name and ingredients json object as below. Recipe File is present in Recipe-Finder/templates
    [{ "name": "grilled cheese on toast", "ingredients": [{"item":"bread", "amount":"2", "unit":"slices" }] }]
 

@@ -53,7 +53,6 @@ function readCsv($itemfileName){
             }
         }
     //} 
-    //print_r($itemArr);die;
     return $itemArr;
 
 }
@@ -71,22 +70,18 @@ function readCsv($itemfileName){
      *
         **/
 function matchRecipe($recipes, $itemArr){
-    $today     = date("Y-m-d");
+    $today     = date("d-m-Y");
     $timestamp = strtotime($today);
+    //echo $timestamp;die;
     $tonightDishArr=[];
     if(!empty($recipes) && !empty($itemArr)){
       foreach ($recipes as $recipe) {
-       // print_r($recipes);die;
         foreach($recipe['ingredients'] as $key => $value) {
-            $currentDate = date("d/m/Y");
-            //echo $currentDate;die;
             $itemKey = array_search($value['item'], array_column($itemArr, 'item')); 
-           // echo $itemKey; die;
-           // echo date("d/m/Y", strtotime($itemArr[$itemKey]['useBy'])); die;
             if($itemKey >=0){
+              //echo strtotime($itemArr[$itemKey]['useBy'])."====";die;
                if(($value['amount'] <= $itemArr[$itemKey]['amount']) &&
-                ($value['unit'] == $itemArr[$itemKey]['unit'])){
-                    // echo "kkk";die;
+                ($value['unit'] == $itemArr[$itemKey]['unit']) && (strtotime($itemArr[$itemKey]['useBy']) >= $today )){
                     if($key == count($recipe['ingredients'])-1){
                        $tonightDishArr[] = $recipe;
                     }
